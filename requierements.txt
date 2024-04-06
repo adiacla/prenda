@@ -1,7 +1,7 @@
 ﻿numpy==1.26.1
 libgl1-mesa-glx
 libglib2.0-0
-opencv-contrib-python
+opencv-python-headless
 pandas==2.1.2
 Pillow==9.5.0
 scikit-image==0.22.0
