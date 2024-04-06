@@ -89,6 +89,7 @@ st.markdown('''                                     * Usamos redes neuronales co
 
 st.markdown('''                                                      ALFREDO DIAZ ''')
 
+st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
 
 left_co, right_co = st.columns(2)
 with left_co:
@@ -144,3 +145,5 @@ with right_co:
         if st.button('PREDECIR FOTO',type="primary"):
                 st.subheader('PREDICCIÓN')
                 predict_class(img)
+st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
+
