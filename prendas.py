@@ -74,7 +74,7 @@ def predict_class(img):
         st.text("!Congratulations!")
         st.text("You could use this word: ")
         st.title(articulo[clase_predicha])
-        St.text("La porobabildiad de las opciones son: ")
+        st.text("La porobabildiad de las opciones son: ")
         st.bar_chart(pred_df)
     else:
         st.text("No me atrevo a predecir, vuleve a dibujar o cargar otra imagen")
