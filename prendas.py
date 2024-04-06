@@ -1,6 +1,7 @@
+
 #Realizado por Alfredo Díaz
 #Se entreno con el notebook  Clasificacion prendas con Python y Tensorflow - Redes Densas
-
+#https://colab.research.google.com/drive/1QhtclhDH-jrmmEtnDGn8MCutliceAKGR?usp=sharing
 #pip install streamlit-drawable-canvas
 #python -m pip install -U scikit-image
 
@@ -68,16 +69,16 @@ def predict_class(img):
     predictions = predictions.ravel()
     clase_predicha = int(predictions.argmax())
     prob_ = 100 * predictions[clase_predicha]
-    if prob_>50:
+    if prob_>umbral:
         pred_df = pd.DataFrame(predictions, index=range(10))
         st.subheader(f'Clase predicha: {clase_predicha},  probabilidad: {prob_:.2f}')
         st.text("!Congratulations!")
         st.text("You could use this word: ")
         st.title(articulo[clase_predicha])
-        st.text("La porobabildiad de las opciones son: ")
+        st.text("La probabildiad de las opciones son: ")
         st.bar_chart(pred_df)
     else:
-        st.text("No me atrevo a predecir, vuleve a dibujar o cargar otra imagen")
+        st.text(f"No me atrevo a predecir, la tolerancia es menor a {umbral} vuelve a dibujar o cargar otra imagen")
         
 
 # =================================================================================
@@ -89,12 +90,20 @@ st.markdown('''                                     * Usamos redes neuronales co
 
 st.markdown('''                                                      ALFREDO DIAZ ''')
 
-st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
+st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#2e22e6;" /> """, unsafe_allow_html=True)
 
-left_co, right_co = st.columns(2)
-with left_co:
+col1,col2,col3=st.columns(3)
+
+with col2:
+    umbral = st.slider('Seleccione el umbral de tolerancia ', 0, 100, 50,1)
+
+tab1, tab2, tab3 = st.tabs(["Dibuja", "Carga Imagen", "Toma una foto"])
+
+
+
+with tab1:
     st.markdown('''                                    ¡Dibuja la  prenda, debes rellenarla lo más posible, por ejemplo:''')
-    st.image("https://complex-valued-neural-networks.readthedocs.io/en/latest/_images/code_examples_fashion_mnist_22_0.png", width=200)
+    st.image("https://complex-valued-neural-networks.readthedocs.io/en/latest/_images/code_examples_fashion_mnist_22_0.png", width=150)
     st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
     #PAra dibujar a mano alzada.
     canvas_result = st_canvas(
@@ -115,11 +124,11 @@ with left_co:
                 st.subheader('PREDICCIÓN')
                 predict_class(img)
     
-with right_co:
-    st.markdown('''¡Carga una foto de la  prenda, de preferencia sin fondo''')
-    st.image("https://m.media-amazon.com/images/I/41J5zICsnLL._SS40_.jpg", width=200)
+with tab2:
+    st.markdown('''¡Carga una foto de la  prenda, de preferencia sin fondo, por ejemplo:''')
+    st.image("https://m.media-amazon.com/images/I/41J5zICsnLL._SS40_.jpg", width=100)
     st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
-   #Para cargar fotos
+    #Para cargar fotos
     uploaded_file = st.file_uploader("Seleccione la imagen",type=['jpeg', 'png', 'jpg', 'webp'])
     if uploaded_file is not None:
         # Normaliza los datos de la imagen si no están en el rango [0.0, 1.0]
@@ -141,8 +150,36 @@ with right_co:
         img = prepara_img(image_array=imagen_array)
 
         
-        if st.button('PREDECIR FOTO',type="primary"):
+        if st.button('PREDECIR IMAGEN',type="primary"):
                 st.subheader('PREDICCIÓN')
                 predict_class(img)
-st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
+    
+with tab3:
+    st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
+    st.title('''¡Toma una foto de la  prenda, de preferencia sin fondo''')
+    st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
 
+    img_file_buffer = st.camera_input("Tomar foto de la prenda")
+
+
+    if img_file_buffer is not None:
+        # To read image file buffer with OpenCV:
+        bytes_data = img_file_buffer.getvalue()
+        image_stream = BytesIO(bytes_data)
+        # Abrir la imagen con PIL
+        image_pil = Image.open(image_stream)
+        # edimensionar la imagen a (28, 28)
+        image_pil = ImageOps.invert(image_pil)
+        #image_pil = ImageOps.invert(image_pil)
+        # Convertir la imagen PIL a un array numpy
+        imagen_array = np.array(image_pil, dtype=np.uint8)
+            
+        # Mostrar la imagen
+        st.image(imagen_array, caption='Foto cargada',width=300 )
+        img = prepara_img(image_array=imagen_array)
+
+            
+        if st.button('PREDECIR FOTO',type="primary"):
+            st.subheader('PREDICCIÓN')
+            predict_class(img)
+    st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
