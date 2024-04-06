@@ -71,7 +71,7 @@ def predict_class(img):
     if prob_>50:
         pred_df = pd.DataFrame(predictions, index=range(10))
         st.subheader(f'Clase predicha: {clase_predicha},  probabilidad: {prob_:.2f}')
-        st.text("!Congratulations!')
+        st.text("!Congratulations!")
         St.text('You could use this word: ")
         st.Title(articulo[clase_predicha])
         St.text('La porobabildiad de las opciones son: ")
