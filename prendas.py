@@ -91,7 +91,7 @@ st.markdown('''                                     * Usamos redes neuronales co
 st.markdown('''                                                      ALFREDO DIAZ ''')
 
 st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#2e22e6;" /> """, unsafe_allow_html=True)
-st.Write(''' Nota: Solo fué entrenado con 9 categorías como: Camiseta/top, pantalones, Pull-over, Vestido, Abrigo/Saco, Sandalia, Camisa, Teniis, Bolso y Botas)
+st.Write(''' Nota: Solo fué entrenado con 9 categorías como: Camiseta/top, pantalones, Pull-over, Vestido, Abrigo/Saco, Sandalia, Camisa, Teniis, Bolso y Botas''')
 
 col1,col2,col3=st.columns(3)
 
@@ -100,10 +100,9 @@ with col2:
 
 tab1, tab2, tab3 = st.tabs(["Dibuja", "Carga Imagen", "Toma una foto"])
 
-
-
 with tab1:
-    #st.write('''Dibuja la  prenda, debes rellenarla lo más posible, por ejemplo:''')
+    st.markdown('''                         !Dibuja la  prenda, debes rellenarla lo más posible, por ejemplo:''')
+
     st.image("https://complex-valued-neural-networks.readthedocs.io/en/latest/_images/code_examples_fashion_mnist_22_0.png", width=150)
     st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
     #PAra dibujar a mano alzada.
