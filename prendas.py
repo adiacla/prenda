@@ -90,7 +90,7 @@ st.markdown('''                                     * Usamos redes neuronales co
 st.markdown('''                                                      ALFREDO DIAZ ''')
 
 
-st.markdown('''                                    ¡Dibuja la  preda o selecciona un archivo con la imagen!''')
+st.markdown('''                                    ¡Dibuja la  prenda, debes rellenarla lo más posible''')
 st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
 left_co, right_co = st.columns(2)
 with left_co:
@@ -114,6 +114,7 @@ with left_co:
                 predict_class(img)
     
 with right_co:
+    st.markdown('''¡Carga una foto de la  prenda, de preferencia sin fondo''')
    #Para cargar fotos
     uploaded_file = st.file_uploader("Seleccione la imagen",type=['jpeg', 'png', 'jpg', 'webp'])
     if uploaded_file is not None:
