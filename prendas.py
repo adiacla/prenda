@@ -9,7 +9,6 @@ import pandas as pd
 import numpy as np
 import cv2
 import tensorflow as tf
-import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 from PIL import Image, ImageOps
 from io import BytesIO
@@ -72,8 +71,10 @@ def predict_class(img):
     if prob_>50:
         pred_df = pd.DataFrame(predictions, index=range(10))
         st.subheader(f'Clase predicha: {clase_predicha},  probabilidad: {prob_:.2f}')
-        st.text("!Congratulations!, You could use this word: ")
-        st.text(articulo[clase_predicha])
+        st.text("!Congratulations!')
+        St.text('You could use this word: ")
+        st.Title(articulo[clase_predicha])
+        St.text('La porobabildiad de las opciones son: ")
         st.bar_chart(pred_df)
     else:
         st.text("No me atrevo a predecir, vuleve a dibujar o cargar otra imagen")
@@ -83,7 +84,7 @@ def predict_class(img):
 
 st.title('                            ¡TRADUCE A INGLES UNA PRENDA DE VESTIR A PARTIR DE UN DIBUJO O UN ARCHIVO!')
 st.markdown('''
-                               La siguiente aplicación intenta traducir prenda de vestir que usted dibuje a inglés. ''')
+                               La siguiente aplicación intenta traducir a inglés una prenda de vestir que usted dibuje. ''')
 st.markdown('''                                     * Usamos redes neuronales convolucionales con Tensorflow y keras.''')
 
 st.markdown('''                                                      ALFREDO DIAZ ''')
@@ -99,8 +100,8 @@ with left_co:
         stroke_width=10,
         stroke_color='#D3D3D3',
         background_color='#000000',
-        width=120,
-        height=120,
+        width=400,
+        height=400,
         drawing_mode='freedraw',
         key='canvas'
     )
