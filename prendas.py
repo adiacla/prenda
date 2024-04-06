@@ -91,7 +91,7 @@ st.markdown('''                                     * Usamos redes neuronales co
 st.markdown('''                                                      ALFREDO DIAZ ''')
 
 st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#2e22e6;" /> """, unsafe_allow_html=True)
-st.Write(''' Nota: Solo fué entrenado con 9 categorías como: Camiseta/top, pantalones, Pull-over, Vestido, Abrigo/Saco, Sandalia, Camisa, Teniis, Bolso y Botas''')
+st.write(''' Nota: Solo fué entrenado con 9 categorías como: Camiseta/top, pantalones, Pull-over, Vestido, Abrigo/Saco, Sandalia, Camisa, Teniis, Bolso y Botas''')
 
 col1,col2,col3=st.columns(3)
 
