@@ -72,7 +72,7 @@ def predict_class(img):
         pred_df = pd.DataFrame(predictions, index=range(10))
         st.subheader(f'Clase predicha: {clase_predicha},  probabilidad: {prob_:.2f}')
         st.text("!Congratulations!")
-        St.text('You could use this word: ")
+        St.text("You could use this word: ")
         st.Title(articulo[clase_predicha])
         St.text('La porobabildiad de las opciones son: ")
         st.bar_chart(pred_df)
