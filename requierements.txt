@@ -1,5 +1,5 @@
 ﻿numpy==1.26.1
-opencv-python-headless==4.8.1.78
+opencv-python-headless
 pandas==2.1.2
 Pillow==9.5.0
 scikit-image==0.22.0
