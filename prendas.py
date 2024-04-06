@@ -62,7 +62,7 @@ def predict_class(img):
     ''' Calculamos y graficamos las predicciones '''
     global model
     global emb_model
-    articulo={0:'T-shirt/top', 1:'Trouser/Pants', 2:'Pullover',3:'Dress',4:'Coat',5:'Sandal',
+    articulo={0:'T-shirt/top', 1:'Trouser/Pants', 2:'Pullover',3:'Dress',4:'Coat',5:'Sandal/shoe',
               6:'Shirt', 7:'Sneaker', 8:'Bag', 9:'Ankle boot'}
     model, emb_model = load_model()
     predictions = model.predict(img)
@@ -91,7 +91,6 @@ st.markdown('''                                     * Usamos redes neuronales co
 st.markdown('''                                                      ALFREDO DIAZ ''')
 
 st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#2e22e6;" /> """, unsafe_allow_html=True)
-st.write(''' Nota: Solo fué entrenado con 9 categorías como: Camiseta/top, pantalones, Pull-over, Vestido, Abrigo/Saco, Sandalia, Camisa, Teniis, Bolso y Botas''')
 
 col1,col2,col3=st.columns(3)
 
@@ -100,11 +99,13 @@ with col2:
 
 tab1, tab2, tab3 = st.tabs(["Dibuja", "Carga Imagen", "Toma una foto"])
 
-with tab1:
-    st.markdown('''                         !Dibuja la  prenda, debes rellenarla lo más posible, por ejemplo:''')
 
+
+with tab1:
+    st.markdown('''                                    ¡Dibuja la  prenda, debes rellenarla lo más posible, por ejemplo:''')
     st.image("https://complex-valued-neural-networks.readthedocs.io/en/latest/_images/code_examples_fashion_mnist_22_0.png", width=150)
     st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
+    st.write(''' Nota: Solo fué entrenado con 9 categorías como: Camiseta/top, pantalones, Pull-over, Vestido, Abrigo/Saco, Sandalia, Camisa, Teniis, Bolso y Botas''')
     #PAra dibujar a mano alzada.
     canvas_result = st_canvas(
         fill_color='#000000',
@@ -169,11 +170,13 @@ with tab3:
         # Abrir la imagen con PIL
         image_pil = Image.open(image_stream)
         # edimensionar la imagen a (28, 28)
+        # Aplicar umbralización (binarización)
         image_pil = ImageOps.invert(image_pil)
         #image_pil = ImageOps.invert(image_pil)
         # Convertir la imagen PIL a un array numpy
         imagen_array = np.array(image_pil, dtype=np.uint8)
-            
+        umbralblanco = 160 # Umbral de binarización, ajustable según sea necesario
+        imagen_array= np.where(imagen_array> umbralblanco, 255, 0).astype(np.uint8)
         # Mostrar la imagen
         st.image(imagen_array, caption='Foto cargada',width=300 )
         img = prepara_img(image_array=imagen_array)
