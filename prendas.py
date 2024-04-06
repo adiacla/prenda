@@ -116,7 +116,6 @@ with left_co:
                 predict_class(img)
     
 with right_co:
-    st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
     st.markdown('''¡Carga una foto de la  prenda, de preferencia sin fondo''')
     st.image("https://m.media-amazon.com/images/I/41J5zICsnLL._SS40_.jpg", width=200)
     st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
