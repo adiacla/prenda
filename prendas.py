@@ -97,7 +97,7 @@ with left_co:
     #PAra dibujar a mano alzada.
     canvas_result = st_canvas(
         fill_color='#000000',
-        stroke_width=10,
+        stroke_width=15,
         stroke_color='#D3D3D3',
         background_color='#000000',
         width=400,
