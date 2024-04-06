@@ -90,7 +90,8 @@ st.markdown('''                                     * Usamos redes neuronales co
 st.markdown('''                                                      ALFREDO DIAZ ''')
 
 
-st.markdown('''                                    ¡Dibuja la  prenda, debes rellenarla lo más posible''')
+st.markdown('''                                    ¡Dibuja la  prenda, debes rellenarla lo más posible, por ejemplo:''')
+st.image("https://complex-valued-neural-networks.readthedocs.io/en/latest/_images/code_examples_fashion_mnist_22_0.png", width=300)
 st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
 left_co, right_co = st.columns(2)
 with left_co:
@@ -114,7 +115,11 @@ with left_co:
                 predict_class(img)
     
 with right_co:
+    st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
     st.markdown('''¡Carga una foto de la  prenda, de preferencia sin fondo''')
+    st.image("https://m.media-amazon.com/images/I/41J5zICsnLL._SS40_.jpg", width=300)
+    st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
+
    #Para cargar fotos
     uploaded_file = st.file_uploader("Seleccione la imagen",type=['jpeg', 'png', 'jpg', 'webp'])
     if uploaded_file is not None:
