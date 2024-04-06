@@ -91,7 +91,7 @@ st.markdown('''                                                      ALFREDO DIA
 
 st.markdown("""<hr style="height:5px;border:none;color:#ff5733;background-color:#ff5733;" /> """, unsafe_allow_html=True)
 
-left_co, right_co = st.columns(2,border=True)
+left_co, right_co = st.columns(2)
 with left_co:
     st.markdown('''                                    ¡Dibuja la  prenda, debes rellenarla lo más posible, por ejemplo:''')
     st.image("https://complex-valued-neural-networks.readthedocs.io/en/latest/_images/code_examples_fashion_mnist_22_0.png", width=200)
