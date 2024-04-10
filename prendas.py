@@ -75,7 +75,7 @@ def predict_class(img):
         st.text("!Congratulations!")
         st.text("You could use this word: ")
         st.title(articulo[clase_predicha])
-        st.text("La probabildiad de las opciones son: ")
+        st.text("La probabilidad de las opciones son: ")
         st.bar_chart(pred_df)
     else:
         st.text(f"No me atrevo a predecir, la tolerancia es menor a {umbral} vuelve a dibujar o cargar otra imagen")
